@@ -28,8 +28,8 @@ jobs:
         run: |
           make MYCFLAGS="-m32" TARGET="libjthreadmagic_x86.so"
           make MYCFLAGS="-m64" TARGET="libjthreadmagic_x64.so"
-      - name: Build (temp windows)
-        if: ${{ matrix.os == 'windows' }}
+      #- name: Build (temp windows)
+      #  if: ${{ matrix.os == 'windows' }}
       - name: Build (temp macos)
         if: ${{ matrix.os == 'macos' }}
         run: make MYCFLAGS="-arch arm64 -arch x86_64" TARGET="libjthreadmagic.dylib"
