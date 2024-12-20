@@ -24,14 +24,14 @@ jobs:
       # TODO: use old distributions
       # TODO: build ubuntu arm, build windows
       - name: Build (temp ubuntu)
-        if: ${{ matrix.os == 'ubuntu' }}
+        if: ${{ matrix.os.name == 'ubuntu' }}
         run: |
           make MYCFLAGS="-m32" TARGET="libjthreadmagic_x86.so"
           make MYCFLAGS="-m64" TARGET="libjthreadmagic_x64.so"
       #- name: Build (temp windows)
-      #  if: ${{ matrix.os == 'windows' }}
+      #  if: ${{ matrix.os.name == 'windows' }}
       - name: Build (temp macos)
-        if: ${{ matrix.os == 'macos' }}
+        if: ${{ matrix.os.name == 'macos' }}
         run: make MYCFLAGS="-arch arm64 -arch x86_64" TARGET="libjthreadmagic.dylib"
 
         # build java, build native, test, release
