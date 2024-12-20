@@ -1,0 +1,37 @@
+on:
+  - push
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [{name: ubuntu, version: ubuntu-20.04}, {name: macos, version: macos-latest}, {name: windows, version: windows-latest}]
+        #arch: [arm32, arm64, x86, x64]
+      fail-fast: false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup JDK 8
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          java-package: 'jdk'
+      # TODO: use old distributions
+      # TODO: build ubuntu arm, build windows
+      - name: Build (temp ubuntu)
+        if: ${{ matrix.os == 'ubuntu' }}
+        run: |
+          make MYCFLAGS="-m32" TARGET="libjthreadmagic_x86.so"
+          make MYCFLAGS="-m64" TARGET="libjthreadmagic_x64.so"
+      - name: Build (temp windows)
+        if: ${{ matrix.os == 'windows' }}
+      - name: Build (temp macos)
+        if: ${{ matrix.os == 'macos' }}
+        run: make MYCFLAGS="-arch arm64 -arch x86_64" TARGET="libjthreadmagic.dylib"
+
+        # build java, build native, test, release

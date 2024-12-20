@@ -1,0 +1,1 @@
+@CL /nologo /O2 /W3 /GL /LD /INCREMENTAL:NO /Fe"build\jthreadmagic.dll" /I "%JAVA_HOME%/include" -I "%JAVA_HOME%/include/win32" jthreadmagic.c

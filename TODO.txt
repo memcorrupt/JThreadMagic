@@ -3,3 +3,5 @@ build binaries with github actions and upload to maven or w/e
 - compile with java 8
 - windows, macos, linux
 - x86, x64, arm
+
+example: https://www.lwjgl.org/browse/stable/bin/lwjgl
