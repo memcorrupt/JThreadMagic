@@ -40,7 +40,7 @@ jobs:
             src/test/java/rip/mem/jthreadmagic/JThreadMagicTest.java
           java -Djava.library.path=build/natives/linux-x64 \
             -cp build/classes rip.mem.jthreadmagic.JThreadMagicTest
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: native-linux-x64
           path: build/natives/
@@ -65,7 +65,7 @@ jobs:
             -I"$JAVA_HOME/include" -I"$JAVA_HOME/include/linux" \
             -o build/natives/linux-x86/libjthreadmagic.so \
             jthreadmagic.c
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: native-linux-x86
           path: build/natives/
@@ -93,7 +93,7 @@ jobs:
             src/test/java/rip/mem/jthreadmagic/JThreadMagicTest.java
           java -Djava.library.path=build/natives/linux-arm64 \
             -cp build/classes rip.mem.jthreadmagic.JThreadMagicTest
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: native-linux-arm64
           path: build/natives/
@@ -127,7 +127,7 @@ jobs:
             src\test\java\rip\mem\jthreadmagic\JThreadMagicTest.java
           java -Djava.library.path=build\natives\windows-x64 ^
             -cp build\classes rip.mem.jthreadmagic.JThreadMagicTest
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: native-windows-x64
           path: build/natives/
@@ -153,7 +153,7 @@ jobs:
             /Fe"build\natives\windows-x86\jthreadmagic.dll" ^
             jthreadmagic.c
           del build\natives\windows-x86\*.exp build\natives\windows-x86\*.lib
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: native-windows-x86
           path: build/natives/
@@ -187,7 +187,7 @@ jobs:
             src\test\java\rip\mem\jthreadmagic\JThreadMagicTest.java
           java -Djava.library.path=build\natives\windows-arm64 ^
             -cp build\classes rip.mem.jthreadmagic.JThreadMagicTest
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: native-windows-arm64
           path: build/natives/
@@ -215,7 +215,7 @@ jobs:
             src/test/java/rip/mem/jthreadmagic/JThreadMagicTest.java
           java -Djava.library.path=build/natives/macos \
             -cp build/classes rip.mem.jthreadmagic.JThreadMagicTest
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: native-macos
           path: build/natives/
@@ -256,7 +256,7 @@ jobs:
         run: mvn -B package -DskipTests
       
       - name: Upload JAR artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: jthreadmagic-jar
           path: target/jthreadmagic-*.jar
